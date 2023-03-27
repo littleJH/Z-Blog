@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Canger';
+  src: url('../src/assets/font/TsangerYuYangT_W04_W04.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  overflow-y: overlay;
+}
+
+@layer components {
+  .btn-red {
+    @apply w-24 h-8 mx-2 bg-red-400 text-white rounded transition-all duration-500 ease-in-out   dark:bg-red-300 dark:text-black hover:bg-red-600 dark:hover:bg-red-500;
+  }
+  .btn-blue {
+    @apply w-24 h-8 mx-2 text-white rounded bg-blue-400 transition-all duration-500 ease-in-out hover:bg-blue-600  dark:bg-blue-300 dark:text-black dark:hover:bg-blue-500;
+  }
+  .btn-opacity-small {
+    @apply w-16 h-6 text-xs  text-black rounded bg-opacity-0 ring-1 ring-gray-500 transition-all duration-500 ease-in-out hover:bg-gray-100  dark:text-gray-300 dark:hover:bg-deepBlack;
+  }
+  .ct-bg {
+    @apply absolute top-0 mt-20 flex flex-col items-center min-w-full bg-opacity-0 transition-all duration-500 ease-in-out dark:text-gray-300;
+  }
+  /* pre {
+    @apply bg-gray-200 border-solid border-2 rounded-lg;
+  } */
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    @apply bg-white dark:bg-black;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 rounded-full;
+  }
+}
