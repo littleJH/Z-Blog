@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import Avatar from '../assets/avatar_male.svg'
+import Avatar from '../assets/avatar.svg'
 import { getCurrentInstance } from 'vue'
 
 // export interface City {
@@ -111,7 +111,7 @@ export interface post {
 }
 
 export interface user {
-  users: Array<obj | string>
+  users: Array<obj>
   userList: Array<User>
 }
 
@@ -128,26 +128,6 @@ export const useStore = defineStore('store1', {
   },
   actions: {},
   getters: {
-    // infoList: state => {
-    //   const userInfo = state.userInfo as any
-    //   const infoList: UserInfo[] = []
-    //   Object.keys(userInfo).forEach(key => {
-    //     if (userInfo[key] === '') {
-    //       infoList.push({
-    //         label: key,
-    //         value: '待完善',
-    //         color: '#DC2626'
-    //       })
-    //     } else {
-    //       infoList.push({
-    //         label: key,
-    //         value: userInfo[key],
-    //         color: '#D1D5DB'
-    //       })
-    //     }
-    //   })
-    //   return infoList
-    // },
     avatarUrl: state => {
       if (!state.userInfo) {
         return Avatar

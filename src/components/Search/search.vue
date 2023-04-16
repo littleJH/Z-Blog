@@ -1,21 +1,11 @@
 <script setup lang="ts">
-import {
-  onMounted,
-  ref,
-  onBeforeMount,
-  reactive,
-  defineProps,
-  watch
-} from 'vue'
+import { ref, onBeforeMount, reactive, defineProps, watch } from 'vue'
 import {
   searchArticleApi,
   searchPostApi,
   searchZipfileApi,
-  searchArticleInterApi,
   searchArticleUnionApi,
-  searchPostInterApi,
   searchPostUnionApi,
-  searchZipfileInterApi,
   searchZipfileUnionApi
 } from '../../api/search'
 import { searchUserEmailApi, searchUserNameApi } from '../../api/searchUser'

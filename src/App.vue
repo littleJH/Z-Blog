@@ -7,7 +7,7 @@ import { personalGetApi } from './api/user'
 import { getUserLabelApi } from './api/label'
 import { ElMessage } from 'element-plus'
 import router from './router/router'
-import { ref, getCurrentInstance } from 'vue'
+import { ref } from 'vue'
 import Search from './components/Search/search.vue'
 
 const store = useStore()
