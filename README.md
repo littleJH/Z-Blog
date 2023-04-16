@@ -52,7 +52,7 @@
 - 热度排行、推荐
 - 热度总榜
 
-![](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416144952261.png)
+  ![](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416144952261.png)
 
 
 
@@ -61,7 +61,7 @@
 - 搜索文章、帖子、跟帖、用户
 - 按文本搜索、按标签搜索
 
-![image-20230416150542179](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150542179.png)
+  ![image-20230416150542179](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150542179.png)
 
 
 
@@ -86,7 +86,7 @@
 - 编辑文章
 - 删除文章
 
-![image-20230416150710719](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150710719.png)
+  ![image-20230416150710719](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150710719.png)
 
 
 
@@ -100,7 +100,7 @@
 - 编辑帖子
 - 删除帖子
 
-![image-20230416145358694](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145358694.png)
+  ![image-20230416145358694](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145358694.png)
 
 
 
@@ -108,7 +108,7 @@
 
 - 跟帖主体
 
-![image-20230416145422536](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145422536.png)
+  ![image-20230416145422536](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145422536.png)
 
 
 
@@ -121,7 +121,7 @@
 - 设置文章私密等级
 - 发布为文章/帖子
 
-![image-20230416145534825](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145534825.png)
+  ![image-20230416145534825](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145534825.png)
 
 
 
@@ -133,7 +133,7 @@
 - 留言：用户留言列表
 - 我的：个人资料展示、编辑
 
-![image-20230416145654229](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145654229.png)
+  ![image-20230416145654229](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145654229.png)
 
 
 
@@ -144,7 +144,7 @@
 - 展示文章、帖子、跟帖、留言板列表
 - 查找该用户的内容
 
-![image-20230416145746115](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145746115.png)
+  ![image-20230416145746115](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145746115.png)
 
 
 
@@ -161,30 +161,32 @@
 #### 加载动画
 
 - 上方蓝色加载进度条
+
 - 需要加载的主体使用骨架结构占位
+
 - 加载完成的列表和列表中删除的项使用Vue的内置组件`<TransitionGroup>`进行动画过渡
 
-```css
-.list-move, /* 对移动中的元素应用的过渡 */
-.list-enter-active,
-.list-leave-active {
-  transition: all 0.5s ease;
-}
+  ```css
+  .list-move, /* 对移动中的元素应用的过渡 */
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.5s ease;
+  }
+  
+  .list-enter-from,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  
+  /* 确保将离开的元素从布局流中删除
+    以便能够正确地计算移动的动画。 */
+  .list-leave-active {
+    position: absolute;
+  }
+  ```
 
-.list-enter-from,
-.list-leave-to {
-  opacity: 0;
-  transform: translateX(30px);
-}
-
-/* 确保将离开的元素从布局流中删除
-  以便能够正确地计算移动的动画。 */
-.list-leave-active {
-  position: absolute;
-}
-```
-
-![image-20230416150130636](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150130636.png)
+  ![image-20230416150130636](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150130636.png)
 
 
 
