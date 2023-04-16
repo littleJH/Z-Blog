@@ -21,6 +21,7 @@
     "moment": "^2.29.4",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.31",
+    "rollup-plugin-visualizer": "^5.9.0",
     "tocbot": "^4.20.1",
     "url": "^0.11.0",
     "vite-plugin-prismjs": "^0.0.8",
