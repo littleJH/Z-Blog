@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, reactive, defineEmits, onMounted } from 'vue'
-import { useStore, User } from '../../stores'
+import { useStore, User } from '../../stores/store'
 import type { FormInstance, StepInstance } from 'element-plus'
 import {
   verifyApi,
@@ -10,9 +10,10 @@ import {
   securityApi,
   updatepassApi
 } from '../../api/user'
+import { getUserLabelApi } from '../../api/label'
 import { useCountDown } from '../../hooks/countDown'
 import { ElMessage } from 'element-plus'
-import router from '../../router'
+import router from '../../router/router'
 
 interface Form {
   [key: string]: string
@@ -50,10 +51,7 @@ const findPassForm = reactive<Form2>({
 const verifyBtn = ref<string>('获取验证码')
 const verifyBtn2 = ref<string>('获取验证码')
 const gettingVerify = ref<boolean>(false)
-const mode = reactive({
-  loginMode: true,
-  registerMode: false
-})
+const mode = ref<'login' | 'register'>('login')
 const showDialog = reactive({
   show: false,
   step1: true,
@@ -208,40 +206,19 @@ const findPass = () => {
   loginFlag.value = false
 }
 
-const toRegister = () => {
-  mode.loginMode = false
-  mode.registerMode = true
-}
-const toLogin = () => {
-  mode.loginMode = true
-  mode.registerMode = false
-}
-
 // 注册
 const getVerify = () => {
   registerRuleFormRef.value?.validate((bool: Boolean, obj: any) => {
     if (bool) {
-      verifyApi(registerForm.email)
-        .then(res => {
-          if (res.data.code === 200) {
-            useCountDown(verifyBtn, gettingVerify)
-            ElMessage.success({
-              message: '验证码获取成功，有效时间300s，请查看邮箱',
-              duration: 3000
-            })
-          } else {
-            ElMessage.warning({
-              message: res.data.msg,
-              duration: 3000
-            })
-          }
-        })
-        .catch(err => {
-          ElMessage.warning({
-            message: '出错啦！',
+      verifyApi(registerForm.email).then(res => {
+        if (res.data.code === 200) {
+          useCountDown(verifyBtn, gettingVerify)
+          ElMessage.success({
+            message: '验证码获取成功，有效时间300s，请查看邮箱',
             duration: 3000
           })
-        })
+        }
+      })
     }
   })
 }
@@ -252,31 +229,20 @@ const register = () => {
   form.append('Name', registerForm.name)
   form.append('Verify', registerForm.verify)
 
-  registApi(form)
-    .then(res => {
-      if (res.data.code === 200) {
-        ElMessage.success({
-          message: '注册成功，欢迎！',
-          duration: 3000
-        })
-        localStorage.setItem('token', res.data.data.token)
-        Object.keys(registerForm).forEach(key => {
-          registerForm[key] = ''
-        })
-        loginFlag.value = true
-      } else {
-        ElMessage.warning({
-          message: res.data.msg,
-          duration: 3000
-        })
-      }
-    })
-    .catch(err => {
-      ElMessage.error({
-        message: '出错啦！',
+  registApi(form).then(res => {
+    if (res.data.code === 200) {
+      ElMessage.success({
+        message: '注册成功，欢迎！',
         duration: 3000
       })
-    })
+      localStorage.setItem('token', res.data.data.token)
+      Object.keys(registerForm).forEach(key => {
+        registerForm[key] = ''
+      })
+      loginFlag.value = true
+      router.push('/')
+    }
+  })
 }
 
 //登录
@@ -285,33 +251,19 @@ const login = () => {
   form.append('Email', loginForm.email)
   form.append('Password', loginForm.password)
 
-  loginApi(form)
-    .then(res => {
-      if (res.data.code === 200) {
-        localStorage.setItem('token', res.data.data.token)
-        ElMessage.success({
-          message: '欢迎！',
-          duration: 3000
-        })
-        loginFlag.value = false
-        Object.keys(loginForm).forEach(key => {
-          loginForm[key] = ''
-        })
-        getPersonal()
-        router.push('/homgpage')
-      } else {
-        ElMessage.warning({
-          message: res.data.msg,
-          duration: 3000
-        })
-      }
-    })
-    .catch(err => {
-      ElMessage.error({
-        message: '出错啦！',
-        duration: 3000
+  loginApi(form).then(res => {
+    console.log(res.data)
+    if (res.data.code === 200) {
+      localStorage.setItem('token', res.data.data.token)
+
+      loginFlag.value = false
+      Object.keys(loginForm).forEach(key => {
+        loginForm[key] = ''
       })
-    })
+      getPersonal()
+      router.push('/')
+    }
+  })
 }
 const getPersonal = () => {
   const config = {
@@ -320,63 +272,43 @@ const getPersonal = () => {
     }
   }
   personalGetApi(config).then(res => {
-    if (res.data.code === 200) {
-      store.userInfo = res.data.data.user
-      emit('login', res.data.data.user.Icon)
-    }
+    const user = res.data.data.user as User
+    getUserLabelApi(user.ID, config).then(result => {
+      user.Labels = result.data.data.labels
+      store.userInfo = user
+      localStorage.setItem('userInfo', JSON.stringify(user))
+      emit('login', user.Icon)
+    })
   })
 }
 
 //找回密码
 const getVerify2 = () => {
-  verifyApi(findPassForm.form1.email)
-    .then(res => {
-      if (res.data.code === 200) {
-        useCountDown(verifyBtn2, gettingVerify)
-        ElMessage.success({
-          message: '验证码获取成功，有效时间300s，请查看邮箱',
-          duration: 3000
-        })
-      } else {
-        ElMessage.warning({
-          message: res.data.msg,
-          duration: 3000
-        })
-      }
-    })
-    .catch(err => {
-      ElMessage.warning({
-        message: '出错啦！',
+  verifyApi(findPassForm.form1.email).then(res => {
+    if (res.data.code === 200) {
+      useCountDown(verifyBtn2, gettingVerify)
+      ElMessage.success({
+        message: '验证码获取成功，有效时间300s，请查看邮箱',
         duration: 3000
       })
-    })
+    }
+  })
 }
 const nextStep = () => {
   const form = new FormData()
   form.append('Email', findPassForm.form1.email)
   form.append('Verify', findPassForm.form1.verify)
-  securityApi(form)
-    .then(res => {
-      if (res.data.code === 200) {
-        ElMessage.success({
-          message: '密码已由系统重置，请查看邮箱',
-          duration: 5000
-        })
-        showDialog.step1 = false
-        showDialog.step2 = true
-      } else {
-        ElMessage.warning({
-          message: res.data.msg,
-          duration: 3000
-        })
-      }
-    })
-    .catch(err => {
-      ElMessage.warning({
-        message: '出错啦！',
-        duration: 3000
+  securityApi(form).then(res => {
+    if (res.data.code === 200) {
+      ElMessage.success({
+        message:
+          '密码已由系统重置，请查看邮箱。您可以直接使用重置后的密码登录，也可以重新设置密码！',
+        duration: 5000
       })
-    })
+      showDialog.step1 = false
+      showDialog.step2 = true
+    }
+  })
 }
 const preStep = () => {
   showDialog.step1 = true
@@ -386,45 +318,31 @@ const submitNewPass = () => {
   const form = new FormData()
   form.append('first', findPassForm.form2.resetPass)
   form.append('second', findPassForm.form2.newPass)
-  updatepassApi(form)
-    .then(res => {
-      if (res.data.code === 200) {
-        ElMessage.success({
-          message: '密码修改成功！',
-          duration: 3000
-        })
-        const form2 = new FormData()
-        form2.append('Email', findPassForm.form1.email)
-        form2.append('Password', findPassForm.form2.newPass)
-        loginApi(form2).then(res => {
-          if (res.data.code === 200) {
-            localStorage.setItem('token', res.data.data.token)
-            ElMessage.success({
-              message: '欢迎！',
-              duration: 3000
-            })
-            closeCard()
-            Object.keys(findPassForm).forEach(key => {
-              Object.keys(findPassForm[key]).forEach(key2 => {
-                findPassForm[key][key2] = ''
-              })
-            })
-            getPersonal()
-          }
-        })
-      } else {
-        ElMessage.warning({
-          message: res.data.msg,
-          duration: 3000
-        })
-      }
-    })
-    .catch(err => {
-      ElMessage.warning({
-        message: '出错啦！',
+  updatepassApi(form).then(res => {
+    console.log(res)
+    if (res.data.code === 200) {
+      ElMessage.success({
+        message: '密码修改成功！',
         duration: 3000
       })
-    })
+      const form2 = new FormData()
+      form2.append('Email', findPassForm.form1.email)
+      form2.append('Password', findPassForm.form2.newPass)
+      loginApi(form2).then(res => {
+        if (res.data.code === 200) {
+          localStorage.setItem('token', res.data.data.token)
+
+          closeCard()
+          Object.keys(findPassForm).forEach(key => {
+            Object.keys(findPassForm[key]).forEach(key2 => {
+              findPassForm[key][key2] = ''
+            })
+          })
+          getPersonal()
+        }
+      })
+    }
+  })
 }
 </script>
 <template>
@@ -441,7 +359,7 @@ const submitNewPass = () => {
         <Transition enter-to-class="animate__animated animate__fadeInRight">
           <!-- 登录模式 -->
           <div
-            v-if="mode.loginMode"
+            v-if="mode === 'login'"
             class="w-1/2 h-full bg-blue-200 flex flex-col justify-center items-center bg-opacity-50 dark:bg-opacity-30 dark:text-white"
           >
             <div class="w-full h-8 text-center text-2xl p-12">登录</div>
@@ -463,7 +381,12 @@ const submitNewPass = () => {
               </el-form>
             </div>
             <div class="text-xs">
-              <a href="#" class="text-center" @click="findPass">忘记密码</a>
+              <a
+                href="#"
+                class="text-center hover:text-blue-500"
+                @click="findPass"
+                >忘记密码</a
+              >
             </div>
             <div class="p-4 h-4">
               <button @click="login" class="btn-blue">登录</button>
@@ -472,32 +395,32 @@ const submitNewPass = () => {
         </Transition>
         <Transition enter-active-class="animate__animated animate__fadeInLeft">
           <div
-            v-if="mode.loginMode"
+            v-if="mode === 'login'"
             class="w-1/2 h-full bg-red-300 bg-opacity-50 flex flex-col justify-center items-center dark:bg-opacity-30 dark:text-white"
           >
             <p class="text-2xl p-4 w-full text-center">没有账号？</p>
             <p class="p-4 w-full text-center">立即注册吧！</p>
             <div class="p-4 h-4">
-              <button @click="toRegister" class="btn-red">注册</button>
+              <button @click="mode = 'register'" class="btn-red">注册</button>
             </div>
           </div>
         </Transition>
         <!-- 注册模式 -->
         <Transition enter-active-class="animate__animated animate__fadeInRight">
           <div
-            v-if="mode.registerMode"
+            v-if="mode === 'register'"
             class="w-1/2 h-full bg-red-300 bg-opacity-50 flex flex-col justify-center items-center dark:bg-opacity-30 dark:text-white"
           >
             <p class="text-2xl p-4 w-full text-center">已有账号？</p>
             <p class="p-4 w-full text-center">立即登录吧！</p>
             <div class="p-4">
-              <button @click="toLogin" class="btn-red">登录</button>
+              <button @click="mode = 'login'" class="btn-red">登录</button>
             </div>
           </div>
         </Transition>
         <Transition enter-active-class="animate__animated animate__fadeInLeft">
           <div
-            v-if="mode.registerMode"
+            v-if="mode === 'register'"
             class="w-1/2 h-full bg-blue-200 flex flex-col justify-center items-center bg-opacity-50 dark:bg-opacity-30 dark:bg-opacity-30 dark:text-white"
           >
             <p class="w-full mb-4 text-center text-2xl">注册</p>
@@ -543,13 +466,13 @@ const submitNewPass = () => {
               </el-form>
             </div>
             <div class="text-xs">
-              <el-button
+              <button
                 @click="getVerify"
                 :disabled="gettingVerify"
-                class="text-center hover:cursor-pointer"
+                class="text-center hover:cursor-pointer hover:text-blue-500"
               >
                 {{ verifyBtn }}
-              </el-button>
+              </button>
             </div>
             <div class="m-4 h-4">
               <button @click="register" class="btn-blue">注册</button>
@@ -577,7 +500,7 @@ const submitNewPass = () => {
         <p class="text-center text-xl pb-4">找回密码</p>
         <div class="px-4 py-2 w-full">
           <el-form
-            :model="findPassForm"
+            :model="findPassForm.form1"
             ref="findRuleFormRef"
             :rules="findPassRules"
             class=""
@@ -597,7 +520,10 @@ const submitNewPass = () => {
           </el-form>
         </div>
         <div class="text-xs">
-          <button @click="getVerify2" class="text-center">
+          <button
+            @click="getVerify2"
+            class="text-center hover:cursor-pointer hover:text-blue-500"
+          >
             {{ verifyBtn2 }}
           </button>
         </div>

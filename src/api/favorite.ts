@@ -5,7 +5,7 @@ export const getArticleFavoritedApi = (id: any, config: any) => {
 }
 
 export const createArticleFavApi = (id: any, config: any) => {
-  return blogReq.put(`/article/favorite/create/${id}`, config)
+  return blogReq.put(`/article/favorite/create/${id}`, {}, config)
 }
 
 export const deleteArticleFavApi = (id: any, config: any) => {
@@ -25,11 +25,11 @@ export const getPostFavoritedApi = (id: any, config: any) => {
 }
 
 export const createPostFavApi = (id: any, config: any) => {
-  return blogReq.put(`/article/favorite/create/${id}`, config)
+  return blogReq.put(`/post/favorite/create/${id}`, {}, config)
 }
 
 export const deletePostFavApi = (id: any, config: any) => {
-  return blogReq.delete(`/article/favorite/delete/${id}`, config)
+  return blogReq.delete(`/post/favorite/delete/${id}`, config)
 }
 
 export const getPostFavListApi = (id: any, config: any) => {
@@ -45,7 +45,7 @@ export const getThreadFavoritedApi = (id: any, config: any) => {
 }
 
 export const createThreadFavApi = (id: any, config: any) => {
-  return blogReq.put(`/thread/favorite/create/${id}`, config)
+  return blogReq.put(`/thread/favorite/create/${id}`, {}, config)
 }
 
 export const deleteThreadFavApi = (id: any, config: any) => {
@@ -65,7 +65,7 @@ export const getZipfileFavoritedApi = (id: any, config: any) => {
 }
 
 export const createZipfileFavApi = (id: any, config: any) => {
-  return blogReq.put(`/zipfile/favorite/create/${id}`, config)
+  return blogReq.put(`/zipfile/favorite/create/${id}`, {}, config)
 }
 
 export const deleteZipfileFavApi = (id: any, config: any) => {

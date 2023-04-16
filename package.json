@@ -18,6 +18,7 @@
     "highlight.js": "^11.7.0",
     "mitt": "^3.0.0",
     "modern-normalize": "^1.1.0",
+    "moment": "^2.29.4",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.31",
     "tocbot": "^4.20.1",

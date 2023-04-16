@@ -57,7 +57,7 @@ export const useStarField = () => {
   }
   let color = ''
   let intervalID = setInterval(() => {
-    drawStars(localStorage.getItem('theme') === 'dark' ? '#000' : '#fff')
+    drawStars(localStorage.getItem('theme') === 'dark' ? '#000' : '#F9FAFB')
   }, 50)
   makeStars()
   window.onresize = () => {
@@ -65,7 +65,7 @@ export const useStarField = () => {
     init()
     makeStars()
     intervalID = setInterval(() => {
-      drawStars(localStorage.getItem('theme') === 'dark' ? '#000' : '#fff')
+      drawStars(localStorage.getItem('theme') === 'dark' ? '#000' : '#F9FAFB')
     }, 50)
   }
 }

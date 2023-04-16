@@ -1,26 +1,26 @@
 import { blogReq } from '../request'
 
 export const setArticleHistoryApi = (id: any, config: any) => {
-  return blogReq.post(`/history/article/${id}`, config)
+  return blogReq.post(`/history/article/${id}`, {}, config)
 }
 
 export const setPostHistoryApi = (id: any, config: any) => {
-  return blogReq.post(`/post/article/${id}`, config)
+  return blogReq.post(`/history/post/${id}`, {}, config)
 }
 
 export const setZipfileHistoryApi = (id: any, config: any) => {
   return blogReq.post(`/history/zipfile/${id}`, config)
 }
 
-export const getArticleHistoryApi = (start: any, end: any, config: any) => {
+export const getArticleHistoryApi = (config: any, start: any, end: any) => {
   return blogReq.get(`/history/article?start=${start}&end=${end}`, config)
 }
 
-export const getPostHistoryApi = (start: any, end: any, config: any) => {
+export const getPostHistoryApi = (config: any, start: any, end: any) => {
   return blogReq.get(`/history/post?start=${start}&end=${end}`, config)
 }
 
-export const getZipfileHistoryApi = (start: any, end: any, config: any) => {
+export const getZipfileHistoryApi = (config: any, start: any, end: any) => {
   return blogReq.get(`/history/zipfile?start=${start}&end=${end}`, config)
 }
 

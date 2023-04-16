@@ -10,7 +10,11 @@ module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   content: [],
   theme: {
-    extend: {},
+    extend: {
+      transitionProperty: {
+        'height': 'height',
+      }
+    },
     boxShadow: {
       'white-md-y': '0 4px 6px 2px rgba(255,255,255, 0.1), 0 2px 4px 2px rgba(255,255,255, 0.06)',
       'md-y': '0 4px 6px 2px rgba(0, 0, 0, 0.1), 0 2px 4px 2px rgba(0, 0, 0, 0.06)',
@@ -29,7 +33,8 @@ module.exports = {
     },
     backgroundColor: theme => ({
       ...theme('colors'),
-      'deepBlack': '#141414'
+      'deepBlack': '#141414',
+      'shallowBlack': '#242424'
     })
   },
   plugins: [],

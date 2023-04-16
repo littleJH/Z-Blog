@@ -5,7 +5,7 @@ export const getArticleLikedApi = (id: any, config: any) => {
 }
 
 export const createArticleLikeApi = (id: any, config: any) => {
-  return blogReq.put(`/article/like/create/${id}`, config)
+  return blogReq.put(`/article/like/create/${id}`, {}, config)
 }
 
 export const deleteArticleLikeApi = (id: any, config: any) => {
@@ -21,7 +21,7 @@ export const getPostLikedApi = (id: any, config: any) => {
 }
 
 export const createPostLikeApi = (id: any, config: any) => {
-  return blogReq.put(`/post/like/create/${id}`, config)
+  return blogReq.put(`/post/like/create/${id}`, {}, config)
 }
 
 export const deletePostLikeApi = (id: any, config: any) => {
@@ -37,7 +37,7 @@ export const getThreadLikeApi = (id: any, config: any) => {
 }
 
 export const createThreadLikeApi = (id: any, config: any) => {
-  return blogReq.put(`/thread/like/create/${id}`, config)
+  return blogReq.put(`/thread/like/create/${id}`, {}, config)
 }
 
 export const deleteThreadLikeApi = (id: any, config: any) => {
@@ -53,7 +53,7 @@ export const getFileLikedApi = (id: any, config: any) => {
 }
 
 export const createFileLikeApi = (id: any, config: any) => {
-  return blogReq.put(`/file/like/create/${id}`, config)
+  return blogReq.put(`/file/like/create/${id}`, {}, config)
 }
 
 export const deleteFileLikeApi = (id: any, config: any) => {
@@ -69,7 +69,7 @@ export const getCommentLikedApi = (id: any, config: any) => {
 }
 
 export const createCommentLikeApi = (id: any, config: any) => {
-  return blogReq.put(`/comment/like/create/${id}`, config)
+  return blogReq.put(`/comment/like/create/${id}`, {}, config)
 }
 
 export const deleteCommentLikeApi = (id: any, config: any) => {

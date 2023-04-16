@@ -4,7 +4,7 @@ export const createPost = (data: any, config: any) => {
   return chitchatReq.post('/post', data, config)
 }
 
-export const updatePost = (id: any, config: any, data: any) => {
+export const updatePost = (id: any, data: any, config: any) => {
   return chitchatReq.put(`/post/${id}`, data, config)
 }
 

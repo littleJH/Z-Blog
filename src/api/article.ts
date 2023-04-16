@@ -13,7 +13,7 @@ export const renewArticleApi = (id: any, data: any, config: any) => {
 }
 
 export const deleteArticleApi = (id: any, config: any) => {
-  return chitchatReq.delete(`/delete/${id}`, config)
+  return chitchatReq.delete(`/article/${id}`, config)
 }
 
 export const pagelistApi = (

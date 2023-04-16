@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ElMessage } from 'element-plus'
-import { useStore } from '../../stores'
-import router from '../../router'
+import { useStore } from '../../stores/store'
+import router from '../../router/router'
 
 const store = useStore()
 const logout = () => {
-  router.push('/user/login')
+  router.push('/login')
   localStorage.removeItem('token')
   localStorage.removeItem('userInfo')
   store.userInfo = null

@@ -29,9 +29,9 @@ export const getThreadPostTimeApi = (id: any, config: any) => {
 }
 
 export const getArticleHotRankingApi = (
-  pageNum: number,
-  pageSize: number,
-  config: any
+  config: any,
+  pageNum = 1,
+  pageSize = 20
 ) => {
   return blogReq.get(
     `/hot/article?pageNum=${pageNum}&pageSize=${pageSize}`,
@@ -40,9 +40,9 @@ export const getArticleHotRankingApi = (
 }
 
 export const getPostHotRankingApi = (
-  pageNum: number,
-  pageSize: number,
-  config: any
+  config: any,
+  pageNum = 1,
+  pageSize = 20
 ) => {
   return blogReq.get(
     `/hot/post?pageNum=${pageNum}&pageSize=${pageSize}`,
@@ -51,9 +51,9 @@ export const getPostHotRankingApi = (
 }
 
 export const getZipfileHotRankingApi = (
-  pageNum: number,
-  pageSize: number,
-  config: any
+  config: any,
+  pageNum = 1,
+  pageSize = 20
 ) => {
   return blogReq.get(
     `/hot/zipfile?pageNum=${pageNum}&pageSize=${pageSize}`,
@@ -62,9 +62,9 @@ export const getZipfileHotRankingApi = (
 }
 
 export const getUserHotRankingJApi = (
-  pageNum: number,
-  pageSize: number,
-  config: any
+  config: any,
+  pageNum = 1,
+  pageSize = 20
 ) => {
   return blogReq.get(
     `/hot/user?pageNum=${pageNum}&pageSize=${pageSize}`,
@@ -89,9 +89,9 @@ export const getUserPptApi = (id: any, config: any) => {
 }
 
 export const getArticleRecommentApi = (
-  pageNum: number,
-  pageSize: number,
-  config: any
+  config: any,
+  pageNum = 1,
+  pageSize = 20
 ) => {
   return blogReq.get(
     `/hot/article/recomment?pageNum=${pageNum}&pageSize=${pageSize}`,
@@ -100,9 +100,9 @@ export const getArticleRecommentApi = (
 }
 
 export const getPostRecommentApi = (
-  pageNum: number,
-  pageSize: number,
-  config: any
+  config: any,
+  pageNum = 1,
+  pageSize = 20
 ) => {
   return blogReq.get(
     `/hot/post/recomment?pageNum=${pageNum}&pageSize=${pageSize}`,
@@ -111,9 +111,9 @@ export const getPostRecommentApi = (
 }
 
 export const getZipfileRecommentApi = (
-  pageNum: number,
-  pageSize: number,
-  config: any
+  config: any,
+  pageNum = 1,
+  pageSize = 20
 ) => {
   return blogReq.get(
     `/hot/zipfile/recomment?pageNum=${pageNum}&pageSize=${pageSize}`,
@@ -122,9 +122,9 @@ export const getZipfileRecommentApi = (
 }
 
 export const getUserRecommentApi = (
-  pageNum: number,
-  pageSize: number,
-  config: any
+  config: any,
+  pageNum = 1,
+  pageSize = 20
 ) => {
   return blogReq.get(
     `/hot/user/recomment?pageNum=${pageNum}&pageSize=${pageSize}`,

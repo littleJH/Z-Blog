@@ -1,0 +1,115 @@
+Date : 2023-04-13 20:32:02
+Directory : d:\projectCode\blog
+Total : 60 files,  1526 codes, -298 comments, 65 blanks, all 1293 lines
+
+Languages
++--------------------+------------+------------+------------+------------+------------+
+| language           | files      | code       | comment    | blank      | total      |
++--------------------+------------+------------+------------+------------+------------+
+| vue                |         45 |      1,335 |       -337 |         45 |      1,043 |
+| JSON               |          2 |         50 |          0 |          2 |         52 |
+| JavaScript         |          3 |         47 |          1 |          2 |         50 |
+| TypeScript         |          5 |         33 |         38 |          5 |         76 |
+| JSON with Comments |          1 |         18 |          0 |          1 |         19 |
+| PostCSS            |          1 |         18 |          0 |          1 |         19 |
+| HTML               |          1 |         13 |          0 |          1 |         14 |
+| Markdown           |          1 |         11 |          0 |          8 |         19 |
+| XML                |          1 |          1 |          0 |          0 |          1 |
++--------------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                         | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                            |         60 |      1,526 |       -298 |         65 |      1,293 |
+| . (Files)                                                    |          9 |        156 |          2 |         16 |        174 |
+| public                                                       |          1 |          1 |          0 |          0 |          1 |
+| src                                                          |         50 |      1,369 |       -300 |         49 |      1,118 |
+| src (Files)                                                  |          2 |         12 |         12 |          2 |         26 |
+| src\api                                                      |          1 |          4 |          0 |          0 |          4 |
+| src\components                                               |         40 |      1,055 |       -273 |         47 |        829 |
+| src\components (Files)                                       |          9 |        208 |          5 |         19 |        232 |
+| src\components\Article                                       |          4 |        -16 |       -130 |         -3 |       -149 |
+| src\components\Editor                                        |          1 |         27 |          0 |          3 |         30 |
+| src\components\Header                                        |          1 |          1 |        -42 |         -1 |        -42 |
+| src\components\Homepage                                      |          2 |        318 |          3 |          7 |        328 |
+| src\components\Post                                          |          4 |        325 |       -104 |          2 |        223 |
+| src\components\Search                                        |          1 |         50 |          0 |          7 |         57 |
+| src\components\Thread                                        |          2 |       -266 |         -5 |         -6 |       -277 |
+| src\components\User                                          |         16 |        408 |          0 |         19 |        427 |
+| src\components\User (Files)                                  |          6 |         81 |          0 |          2 |         83 |
+| src\components\User\Board                                    |          2 |        -36 |          0 |         -3 |        -39 |
+| src\components\User\Fav                                      |          4 |        103 |          0 |          8 |        111 |
+| src\components\User\Friend                                   |          3 |         38 |          0 |          3 |         41 |
+| src\components\User\History                                  |          1 |        222 |          0 |          9 |        231 |
+| src\router                                                   |          1 |          7 |         25 |          1 |         33 |
+| src\stores                                                   |          1 |         11 |          0 |          1 |         12 |
+| src\views                                                    |          5 |        280 |        -64 |         -2 |        214 |
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| filename                                                     | language           | code       | comment    | blank      | total      |
++--------------------------------------------------------------+--------------------+------------+------------+------------+------------+
+| d:\projectCode\blog\README.md                                | Markdown           |         11 |          0 |          8 |         19 |
+| d:\projectCode\blog\demo.js                                  | JavaScript         |          0 |          0 |          1 |          1 |
+| d:\projectCode\blog\index.html                               | HTML               |         13 |          0 |          1 |         14 |
+| d:\projectCode\blog\package.json                             | JSON               |         41 |          0 |          1 |         42 |
+| d:\projectCode\blog\postcss.config.cjs                       | JavaScript         |          6 |          0 |          1 |          7 |
+| d:\projectCode\blog\public\blogger.svg                       | XML                |          1 |          0 |          0 |          1 |
+| d:\projectCode\blog\src\api\visible.ts                       | TypeScript         |          4 |          0 |          0 |          4 |
+| d:\projectCode\blog\src\components\Article\admin.vue         | vue                |         16 |          0 |          2 |         18 |
+| d:\projectCode\blog\src\components\Article\article.vue       | vue                |         43 |        -13 |          2 |         32 |
+| d:\projectCode\blog\src\components\Article\articleList.vue   | vue                |       -118 |       -117 |        -10 |       -245 |
+| d:\projectCode\blog\src\components\Article\articleModify.vue | vue                |         43 |          0 |          3 |         46 |
+| d:\projectCode\blog\src\components\Editor\editor.vue         | vue                |         27 |          0 |          3 |         30 |
+| d:\projectCode\blog\src\components\Header\header.vue         | vue                |          1 |        -42 |         -1 |        -42 |
+| d:\projectCode\blog\src\components\Homepage\articles.vue     | vue                |         15 |          0 |          0 |         15 |
+| d:\projectCode\blog\src\components\Homepage\topAll.vue       | vue                |        303 |          3 |          7 |        313 |
+| d:\projectCode\blog\src\components\Post\post.vue             | vue                |        100 |          4 |         -1 |        103 |
+| d:\projectCode\blog\src\components\Post\postList.vue         | vue                |       -109 |       -111 |         -8 |       -228 |
+| d:\projectCode\blog\src\components\Post\postModify.vue       | vue                |        123 |          0 |          1 |        124 |
+| d:\projectCode\blog\src\components\Post\threads.vue          | vue                |        211 |          3 |         10 |        224 |
+| d:\projectCode\blog\src\components\Search\search.vue         | vue                |         50 |          0 |          7 |         57 |
+| d:\projectCode\blog\src\components\Thread\thread.vue         | vue                |         13 |          0 |          2 |         15 |
+| d:\projectCode\blog\src\components\Thread\threadList.vue     | vue                |       -279 |         -5 |         -8 |       -292 |
+| d:\projectCode\blog\src\components\User\Board\board.vue      | vue                |         20 |          0 |          1 |         21 |
+| d:\projectCode\blog\src\components\User\Board\myMessage.vue  | vue                |        -56 |          0 |         -4 |        -60 |
+| d:\projectCode\blog\src\components\User\Fav\articles.vue     | vue                |         31 |          0 |          3 |         34 |
+| d:\projectCode\blog\src\components\User\Fav\fav.vue          | vue                |         10 |          0 |          2 |         12 |
+| d:\projectCode\blog\src\components\User\Fav\post.vue         | vue                |         32 |          0 |          2 |         34 |
+| d:\projectCode\blog\src\components\User\Fav\threads.vue      | vue                |         30 |          0 |          1 |         31 |
+| d:\projectCode\blog\src\components\User\Friend\circle.vue    | vue                |         21 |          0 |          3 |         24 |
+| d:\projectCode\blog\src\components\User\Friend\friend.vue    | vue                |         18 |          0 |          0 |         18 |
+| d:\projectCode\blog\src\components\User\Friend\myApply.vue   | vue                |         -1 |          0 |          0 |         -1 |
+| d:\projectCode\blog\src\components\User\History\history.vue  | vue                |        222 |          0 |          9 |        231 |
+| d:\projectCode\blog\src\components\User\login.vue            | vue                |          3 |          0 |          0 |          3 |
+| d:\projectCode\blog\src\components\User\modifyInfo.vue       | vue                |         69 |          0 |          2 |         71 |
+| d:\projectCode\blog\src\components\User\overview.vue         | vue                |         -1 |          0 |          1 |          0 |
+| d:\projectCode\blog\src\components\User\personalInfo.vue     | vue                |         10 |          0 |          1 |         11 |
+| d:\projectCode\blog\src\components\User\userMsgBoard.vue     | vue                |          4 |          0 |          0 |          4 |
+| d:\projectCode\blog\src\components\User\userPage.vue         | vue                |         -4 |          0 |         -2 |         -6 |
+| d:\projectCode\blog\src\components\alertCard.vue             | vue                |          7 |          0 |          0 |          7 |
+| d:\projectCode\blog\src\components\articleCard.vue           | vue                |         11 |          0 |          0 |         11 |
+| d:\projectCode\blog\src\components\historCard.vue            | vue                |          0 |          0 |          1 |          1 |
+| d:\projectCode\blog\src\components\likefavList.vue           | vue                |         48 |          0 |          4 |         52 |
+| d:\projectCode\blog\src\components\messageCard.vue           | vue                |          2 |          0 |          0 |          2 |
+| d:\projectCode\blog\src\components\pagination.vue            | vue                |         28 |          0 |          3 |         31 |
+| d:\projectCode\blog\src\components\postCard.vue              | vue                |         70 |          0 |          7 |         77 |
+| d:\projectCode\blog\src\components\threadCard.vue            | vue                |         41 |          5 |          4 |         50 |
+| d:\projectCode\blog\src\components\userCard.vue              | vue                |          1 |          0 |          0 |          1 |
+| d:\projectCode\blog\src\index.css                            | PostCSS            |         18 |          0 |          1 |         19 |
+| d:\projectCode\blog\src\main.ts                              | TypeScript         |         -6 |         12 |          1 |          7 |
+| d:\projectCode\blog\src\router\router.ts                     | TypeScript         |          7 |         25 |          1 |         33 |
+| d:\projectCode\blog\src\stores\store.ts                      | TypeScript         |         11 |          0 |          1 |         12 |
+| d:\projectCode\blog\src\views\articlePage.vue                | vue                |         -2 |          0 |         -1 |         -3 |
+| d:\projectCode\blog\src\views\homepage.vue                   | vue                |         75 |        -64 |          0 |         11 |
+| d:\projectCode\blog\src\views\personalPage.vue               | vue                |        211 |          0 |          1 |        212 |
+| d:\projectCode\blog\src\views\postPage.vue                   | vue                |         -2 |          0 |         -1 |         -3 |
+| d:\projectCode\blog\src\views\threadPage.vue                 | vue                |         -2 |          0 |         -1 |         -3 |
+| d:\projectCode\blog\tailwind.config.cjs                      | JavaScript         |         41 |          1 |          0 |         42 |
+| d:\projectCode\blog\tsconfig.json                            | JSON with Comments |         18 |          0 |          1 |         19 |
+| d:\projectCode\blog\tsconfig.node.json                       | JSON               |          9 |          0 |          1 |         10 |
+| d:\projectCode\blog\vite.config.ts                           | TypeScript         |         17 |          1 |          2 |         20 |
+| Total                                                        |                    |      1,526 |       -298 |         65 |      1,293 |
++--------------------------------------------------------------+--------------------+------------+------------+------------+------------+

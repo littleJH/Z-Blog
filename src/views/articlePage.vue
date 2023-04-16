@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import articleList from '../components/Article/articleList.vue'
-import { useStore } from '../stores'
-
-const userid = useStore().userInfo?.user_id
 </script>
 <template>
   <div class="ct-bg">
-    <div class="shadow-lg">
-      <articleList :userid="userid"></articleList>
+    <div class="shadow-md rounded p-4 bg-white dark:bg-deepBlack">
+      <articleList></articleList>
     </div>
   </div>
 </template>
