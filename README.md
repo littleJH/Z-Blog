@@ -2,22 +2,18 @@
 
 本项目是一个基于 Vite、Vue 和 Tainwindcss 构建的个人博客网站。该网站提供一个简单而优雅的博客平台，提供给用户高质量的内容和用户体验。
 
-
-
 ## 网站示例
-
-
 
 ## 技术栈
 
-- Vue3：更加高效、灵活和易于使用的Vue.js框架版本
-- Vite：进行生产构建，代替了Vue Cli
-- Tailwind Css：一种基于原子类的CSS框架
-- ElementPlus：功能强大、易于使用、高度可定制的Vue.js UI框架
-- Axios：用于处理HTTP请求和响应
+- Vue3：更加高效、灵活和易于使用的 Vue.js 框架版本
+- Vite：进行生产构建，代替了 Vue Cli
+- Tailwind Css：一种基于原子类的 CSS 框架
+- ElementPlus：功能强大、易于使用、高度可定制的 Vue.js UI 框架
+- Axios：用于处理 HTTP 请求和响应
 - Tocbot：用于生成文章目录
 - moment：对时间进行初始化、格式化等
-- vue-markdown：提供markdown编辑器和markdown文件渲染功能
+- vue-markdown：提供 markdown 编辑器和 markdown 文件渲染功能
 - highlight.js：代码高亮处理
 
 ## 安装和使用
@@ -41,11 +37,13 @@
    npm run dev
    ```
 
+## 接口文档
 
+![](https://github.com/MGABronya/Blog/blob/main/README.md)
 
 ## 功能和特点
 
-### 功能 
+### 功能
 
 #### 首页
 
@@ -54,16 +52,12 @@
 
   ![](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416144952261.png)
 
-
-
 #### 搜索
 
 - 搜索文章、帖子、跟帖、用户
 - 按文本搜索、按标签搜索
 
   ![image-20230416150542179](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150542179.png)
-
-
 
 #### 文章 & 帖子 & 跟帖列表
 
@@ -72,8 +66,6 @@
 ![image-20230416145111869](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145111869.png)
 
 ![image-20230416145127920](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145127920.png)
-
-
 
 #### 文章
 
@@ -88,8 +80,6 @@
 
   ![image-20230416150710719](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150710719.png)
 
-
-
 #### 帖子
 
 - 帖子主体
@@ -102,15 +92,11 @@
 
   ![image-20230416145358694](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145358694.png)
 
-
-
 #### 跟帖
 
 - 跟帖主体
 
   ![image-20230416145422536](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145422536.png)
-
-
 
 #### 创作中心
 
@@ -123,8 +109,6 @@
 
   ![image-20230416145534825](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145534825.png)
 
-
-
 #### 个人中心
 
 - 好友：好友圈、好友列表、好友申请、我的申请
@@ -135,8 +119,6 @@
 
   ![image-20230416145654229](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145654229.png)
 
-
-
 #### 用户主页
 
 - 添加好友
@@ -146,8 +128,6 @@
 
   ![image-20230416145746115](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416145746115.png)
 
-
-
 ### 特点
 
 #### 深色模式
@@ -156,15 +136,13 @@
 
 ![image-20230416150005756](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150005756.png)
 
-
-
 #### 加载动画
 
 - 上方蓝色加载进度条
 
 - 需要加载的主体使用骨架结构占位
 
-- 加载完成的列表和列表中删除的项使用Vue的内置组件`<TransitionGroup>`进行动画过渡
+- 加载完成的列表和列表中删除的项使用 Vue 的内置组件`<TransitionGroup>`进行动画过渡
 
   ```css
   .list-move, /* 对移动中的元素应用的过渡 */
@@ -172,13 +150,13 @@
   .list-leave-active {
     transition: all 0.5s ease;
   }
-  
+
   .list-enter-from,
   .list-leave-to {
     opacity: 0;
     transform: translateX(30px);
   }
-  
+
   /* 确保将离开的元素从布局流中删除
     以便能够正确地计算移动的动画。 */
   .list-leave-active {
@@ -188,9 +166,6 @@
 
   ![image-20230416150130636](https://raw.githubusercontent.com/littleJH/PicBed/main/img/image-20230416150130636.png)
 
-
-
 #### 目录跟随滚动条滚动
 
 当滚动文章时，文章的目录会跟随滚动到对应位置
-
