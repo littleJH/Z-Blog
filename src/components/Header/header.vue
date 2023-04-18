@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ref, getCurrentInstance, defineEmits } from 'vue'
+import { ref, defineEmits } from 'vue'
 import { useStore } from '../../stores/store'
 import router from '../../router/router'
 import SearchIcon from '../../assets/search.svg'
-import { useRoute } from 'vue-router'
 
 const store = useStore()
 const searchText = ref('')
 const theme = ref(localStorage.getItem('theme') === 'dark' ? true : false)
+const emit = defineEmits(['themeChange'])
 
 const handelClick = () => {
   if (!localStorage.getItem('token')) {
@@ -22,10 +22,12 @@ const themeChange = () => {
     localStorage.setItem('theme', 'dark')
     document.documentElement.classList.add('dark')
     store.theme = 'dark'
+    emit('themeChange', { theme: 'dark' })
   } else {
     localStorage.setItem('theme', 'light')
     document.documentElement.classList.remove('dark')
     store.theme = 'light'
+    emit('themeChange', { theme: 'light' })
   }
 }
 

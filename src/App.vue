@@ -12,6 +12,7 @@ import Search from './components/Search/search.vue'
 
 const store = useStore()
 const showSearch = ref<boolean>(false)
+const showDark = ref<boolean>(false)
 
 const getPersonal = () => {
   if (localStorage.getItem('token')) {
@@ -47,22 +48,42 @@ onMounted(() => {
         window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       document.documentElement.classList.add('dark')
+      showDark.value = true
     } else {
       document.documentElement.classList.remove('dark')
+      showDark.value = false
     }
   }
 
-  useStarField()
   getPersonal()
 })
+
+const afterEnter = () => {
+  useStarField()
+}
+
+const themeChange = (value: any) => {
+  if (value.theme === 'dark') {
+    showDark.value = true
+  } else {
+    showDark.value = false
+  }
+}
 
 const openSearch = () => {
   showSearch.value = true
 }
 </script>
 <template>
-  <canvas id="starField" class="fixed top-0 z-0 w-full h-full"></canvas>
-  <Header @open-search="openSearch"></Header>
+  <Transition @after-enter="afterEnter">
+    <canvas
+      v-if="showDark"
+      id="starField"
+      class="fixed top-0 z-0 w-full h-full"
+    ></canvas>
+  </Transition>
+
+  <Header @theme-change="themeChange" @open-search="openSearch"></Header>
   <Search v-if="showSearch"></Search>
   <RouterView></RouterView>
 </template>

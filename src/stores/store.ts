@@ -123,7 +123,8 @@ export const useStore = defineStore('store1', {
       theme: localStorage.getItem('theme'),
       articleRecommend: null as article | null,
       postRecommend: null as post | null,
-      userRecommend: null as user | null
+      userRecommend: null as user | null,
+      showCanvas: false
     }
   },
   actions: {},

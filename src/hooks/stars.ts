@@ -33,8 +33,8 @@ export const useStarField = () => {
     }
   }
 
-  function drawStars(color: string) {
-    context.fillStyle = color
+  function drawStars() {
+    context.fillStyle = '#000'
     context.fillRect(0, 0, canvas.width, canvas.height)
     for (let i = 0; i < stars.length; i++) {
       let x = stars[i]['x'] - stars[i]['speed']
@@ -55,17 +55,14 @@ export const useStarField = () => {
       context.fill()
     }
   }
-  let color = ''
   let intervalID = setInterval(() => {
-    drawStars(localStorage.getItem('theme') === 'dark' ? '#000' : '#F9FAFB')
+    drawStars()
   }, 50)
   makeStars()
   window.onresize = () => {
     //窗口大小发生变化时重新随机生成星星数据
     init()
     makeStars()
-    intervalID = setInterval(() => {
-      drawStars(localStorage.getItem('theme') === 'dark' ? '#000' : '#F9FAFB')
-    }, 50)
+    drawStars()
   }
 }
