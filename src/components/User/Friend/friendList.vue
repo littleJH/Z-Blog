@@ -50,7 +50,7 @@ const deleteFriend = (index: number) => {
   <TransitionGroup name="list" tag="div">
     <div
       v-for="(item, index) in friendList.list"
-      :key="index"
+      :key="item.ID"
       class="flex items-center justify-center"
     >
       <div class="flex-grow">

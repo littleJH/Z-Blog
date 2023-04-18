@@ -48,7 +48,7 @@ const deleteMsg = (index: any) => {
     <messageCard
       v-for="(item, index) in messageList.list"
       mode="self"
-      :key="index"
+      :key="item.id"
       :message="item"
       :index="index"
       @delete-msg="deleteMsg(index)"

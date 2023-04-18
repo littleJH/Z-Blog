@@ -56,7 +56,7 @@ const acceptApply = (index: number) => {
   <TransitionGroup name="list" tag="div">
     <div
       v-for="(item, index) in applyList.list"
-      id="index"
+      :key="item.ID"
       class="flex items-center"
     >
       <div class="flex-grow">
