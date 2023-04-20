@@ -144,12 +144,18 @@ const aboutMainbody = () => {
   titleEl[0]?.parentNode?.removeChild(titleEl[0])
   const blocks = el.querySelectorAll('pre')
   blocks.forEach((block: HTMLElement, index: number) => {
-    hljs.highlightBlock(block)
+    hljs.highlightElement(block)
     languageList.push(
       block.classList.value.slice(block.classList.value.indexOf('language') + 9)
     )
 
-    block?.classList.add('relative', 'overflow-x-auto', 'overflow-y-auto')
+    block?.classList.add(
+      'relative',
+      'overflow-x-auto',
+      'overflow-y-auto',
+      'p-4',
+      'rounded'
+    )
     const codeEl = block.querySelector('code')
     const langTag = document.createElement('span')
     langTag.innerHTML = languageList[index]

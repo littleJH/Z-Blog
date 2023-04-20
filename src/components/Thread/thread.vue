@@ -80,7 +80,7 @@ const aboutMainbody = () => {
   const el = document.getElementById(`${thread.post.id}`) as HTMLElement
   const blocks = document.querySelectorAll('pre')
   blocks.forEach((block: HTMLElement, index: number) => {
-    hljs.highlightBlock(block)
+    hljs.highlightElement(block)
     languageList.push(
       block.classList.value.slice(block.classList.value.indexOf('language') + 9)
     )
@@ -89,7 +89,9 @@ const aboutMainbody = () => {
       'relative',
       'overflow-x-auto',
       'overflow-y-auto',
-      'bg-black'
+      'bg-black',
+      'p-4',
+      'rounded'
     )
     const codeEl = block.querySelector('code')
     const langTag = document.createElement('span')

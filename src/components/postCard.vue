@@ -72,12 +72,18 @@ const afterEnter = () => {
   const el = document.getElementById(post.id) as HTMLElement
   const blocks = el.querySelectorAll('pre')
   blocks.forEach((block: any, index: number) => {
-    hljs.highlightBlock(block)
+    hljs.highlightElement(block)
     languageList.push(
       block.classList.value.slice(block.classList.value.indexOf('language') + 9)
     )
 
-    block?.classList.add('relative', 'overflow-x-auto', 'overflow-y-auto')
+    block?.classList.add(
+      'relative',
+      'overflow-x-auto',
+      'overflow-y-auto',
+      'p-4',
+      'rounded'
+    )
     const codeEl = block.querySelector('code')
     const langTag = document.createElement('span')
     langTag.innerHTML = languageList[index]
