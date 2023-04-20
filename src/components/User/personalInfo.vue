@@ -15,7 +15,7 @@ const config = {
     Authorization: 'Bearer ' + localStorage.getItem('token')
   }
 }
-onBeforeMount(async () => {
+onBeforeMount(() => {
   Object.keys(userInfo).forEach(key => {
     if (userInfo[key] === '') {
       infoList.push({

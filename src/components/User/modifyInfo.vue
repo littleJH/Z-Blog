@@ -19,6 +19,7 @@ import {
   getUserLabelApi,
   deleteUserLabelApi
 } from '../../api/label'
+import { ReactiveFlags } from 'vue'
 
 const store = useStore()
 const userInfo = reactive(
@@ -126,7 +127,11 @@ const uploadInfo = () => {
   setPersonalApi(JSON.stringify(form), config).then(async res => {
     if (res.data.code === 200) {
       await personalGetApi(config).then(res => {
-        localStorage.setItem('userInfo', JSON.stringify(res.data.data.user))
+        const user = res.data.data.user
+        getUserLabelApi(userInfo.ID, config).then(result => {
+          user.Labels = result.data.data.labels
+          localStorage.setItem('userInfo', JSON.stringify(user))
+        })
       })
       ElMessage.success({
         message: '资料修改成功',
@@ -134,6 +139,11 @@ const uploadInfo = () => {
       })
       router.push({
         path: '/personal/info'
+      })
+    } else {
+      ElMessage.warning({
+        message: res.data.msg,
+        offset: 80
       })
     }
   })
