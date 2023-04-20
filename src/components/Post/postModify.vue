@@ -111,7 +111,7 @@ const doPublish = () => {
       }
       ElMessage.success({
         message: '发布成功',
-        duration: 5000
+        offset: 80
       })
       post.labels = labels.value
       Promise.all([

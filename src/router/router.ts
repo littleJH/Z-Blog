@@ -1,4 +1,9 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  RouteRecordRaw,
+  useRoute
+} from 'vue-router'
 import PersonalPage from '../views/personalPage.vue'
 import Homepage from '../views/homepage.vue'
 import ArticleList from '../components/Article/articleList.vue'
@@ -271,6 +276,7 @@ const router = createRouter({
 })
 
 router.beforeEach(to => {
+  console.log(to)
   if (!localStorage.getItem('token') && to.path !== '/login') {
     ElMessage.warning({
       message: '您还没有登录',

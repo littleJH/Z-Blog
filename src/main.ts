@@ -14,6 +14,7 @@ import VMdPreviewHtml from '@kangc/v-md-editor/lib/preview-html'
 import '@kangc/v-md-editor/lib/style/preview-html.css'
 import VMdPreview from '@kangc/v-md-editor/lib/preview'
 import '@kangc/v-md-editor/lib/style/preview.css'
+import 'element-plus/es/components/message/style/css'
 import emitter from 'mitt'
 
 type Events = {

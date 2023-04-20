@@ -11,7 +11,7 @@ const logout = () => {
   store.userInfo = null
   ElMessage.success({
     message: '欢迎再次登录！',
-    duration: 5000
+    offset: 80
   })
 }
 </script>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, reactive, defineEmits, onMounted } from 'vue'
 import { useStore, User } from '../../stores/store'
-import type { FormInstance, StepInstance } from 'element-plus'
+import type { FormInstance } from 'element-plus'
 import {
   verifyApi,
   registApi,
@@ -215,7 +215,12 @@ const getVerify = () => {
           useCountDown(verifyBtn, gettingVerify)
           ElMessage.success({
             message: '验证码获取成功，有效时间300s，请查看邮箱',
-            duration: 3000
+            offset: 80
+          })
+        } else {
+          ElMessage.warning({
+            message: res.data.msg,
+            offset: 80
           })
         }
       })
@@ -262,6 +267,11 @@ const login = () => {
       })
       getPersonal()
       router.push('/')
+    } else {
+      ElMessage.warning({
+        message: res.data.msg,
+        offset: 80
+      })
     }
   })
 }
@@ -291,6 +301,11 @@ const getVerify2 = () => {
         message: '验证码获取成功，有效时间300s，请查看邮箱',
         duration: 3000
       })
+    } else {
+      ElMessage.warning({
+        message: res.data.msg,
+        offset: 80
+      })
     }
   })
 }
@@ -303,10 +318,15 @@ const nextStep = () => {
       ElMessage.success({
         message:
           '密码已由系统重置，请查看邮箱。您可以直接使用重置后的密码登录，也可以重新设置密码！',
-        duration: 5000
+        offset: 80
       })
       showDialog.step1 = false
       showDialog.step2 = true
+    } else {
+      ElMessage.warning({
+        message: res.data.msg,
+        offset: 80
+      })
     }
   })
 }
@@ -323,7 +343,7 @@ const submitNewPass = () => {
     if (res.data.code === 200) {
       ElMessage.success({
         message: '密码修改成功！',
-        duration: 3000
+        offset: 80
       })
       const form2 = new FormData()
       form2.append('Email', findPassForm.form1.email)
@@ -341,6 +361,11 @@ const submitNewPass = () => {
           getPersonal()
         }
       })
+    } else {
+      ElMessage.warning({
+        message: res.data.msg,
+        offset: 80
+      })
     }
   })
 }
@@ -353,7 +378,7 @@ const submitNewPass = () => {
     <div class="h-full absolute top-0 w-full flex justify-center items-center">
       <div
         v-if="loginFlag"
-        class="flex justify-center items-center shadow-2xl"
+        class="flex justify-center items-center shadow-md"
         style="width: 600px; height: 400px"
       >
         <Transition enter-to-class="animate__animated animate__fadeInRight">

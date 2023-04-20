@@ -30,7 +30,7 @@ const doPublish = () => {
   if (threadModifyText.value === '') {
     ElMessage.warning({
       message: '您还没有写一些内容',
-      duration: 3000
+      offset: 80
     })
     return
   }
@@ -49,7 +49,7 @@ const doPublish = () => {
     if (res.data.code === 200) {
       ElMessage.success({
         message: '发布成功',
-        duration: 5000
+        offset: 80
       })
       await getPostApi(res.data.data.thread.post_id, {
         headers: {

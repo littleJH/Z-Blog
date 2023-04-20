@@ -134,7 +134,7 @@ const doPublish = () => {
 
         ElMessage.success({
           message: '发布成功',
-          duration: 5000
+          offset: 80
         })
         Object.assign(article, labels.value)
         localStorage.setItem('article', JSON.stringify(article))
@@ -174,7 +174,7 @@ const doPublish = () => {
 
         ElMessage.success({
           message: '发布成功',
-          duration: 5000
+          offset: 80
         })
         Object.assign(post, labels.value)
         localStorage.removeItem('editorMdText')

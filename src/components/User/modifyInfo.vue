@@ -63,7 +63,7 @@ const handleAvatarChange: UploadProps['onChange'] = (file: UploadFile) => {
   if (fileType !== 'png' && fileType !== 'jpg') {
     ElMessage.warning({
       message: '图片格式不正确，限上传png或jpg格式图片',
-      duration: 3000
+      offset: 80
     })
     return false
   }
