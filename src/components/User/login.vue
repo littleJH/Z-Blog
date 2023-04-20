@@ -238,7 +238,7 @@ const register = () => {
     if (res.data.code === 200) {
       ElMessage.success({
         message: '注册成功，欢迎！',
-        duration: 3000
+        offset: 80
       })
       localStorage.setItem('token', res.data.data.token)
       Object.keys(registerForm).forEach(key => {
@@ -299,7 +299,7 @@ const getVerify2 = () => {
       useCountDown(verifyBtn2, gettingVerify)
       ElMessage.success({
         message: '验证码获取成功，有效时间300s，请查看邮箱',
-        duration: 3000
+        offset: 80
       })
     } else {
       ElMessage.warning({

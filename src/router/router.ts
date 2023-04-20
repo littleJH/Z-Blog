@@ -125,6 +125,7 @@ const routes: Readonly<RouteRecordRaw[]> = [
     children: [
       {
         path: '',
+        name: 'overview',
         component: Overview
       },
       {
@@ -184,32 +185,6 @@ const routes: Readonly<RouteRecordRaw[]> = [
         path: 'history',
         name: 'personalHistory',
         component: History
-        // props: route => ({
-        //   range: route.query.range,
-        //   mode: route.query.mode
-        // })
-        // children: [
-        //   {
-        //     path: '',
-        //     redirect: '/personal/history/article'
-        //   },
-        //   {
-        //     path: 'article',
-        //     name: 'articleHistory',
-        //     component: ArticleHistory,
-
-        //   },
-        //   {
-        //     path: 'post',
-        //     name: 'postHistory',
-        //     component: PostHistory
-        //   },
-        //   {
-        //     path: 'zipfile',
-        //     name: 'zipfileHistory',
-        //     component: ZipfileHistory
-        //   }
-        // ]
       },
       {
         path: 'board',
@@ -260,18 +235,15 @@ const routes: Readonly<RouteRecordRaw[]> = [
     path: '/editor',
     component: Editor
   }
-
-  // {
-  //   path: 'user/:id/:page',
-  //   children: [{
-  //     path: '',
-  //     name: ''
-  //   }]
-  // }
 ]
 
+const base =
+  import.meta.env.MODE === 'development'
+    ? ''
+    : location.pathname.slice(0, location.pathname.indexOf('/dist') + 5)
+
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(base),
   routes: routes
 })
 
