@@ -10,12 +10,12 @@
   },
   "dependencies": {
     "@kangc/v-md-editor": "next",
-    "@types/marked": "^4.0.8",
     "@vueuse/core": "^9.13.0",
     "animate.css": "^4.1.1",
     "axios": "^1.2.2",
     "element-plus": "^2.2.32",
     "highlight.js": "^11.7.0",
+    "marked": "^5.0.4",
     "mitt": "^3.0.0",
     "modern-normalize": "^1.1.0",
     "moment": "^2.29.4",
