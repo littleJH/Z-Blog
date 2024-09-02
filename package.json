@@ -30,6 +30,7 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
+    "@types/marked": "^5.0.2",
     "@vitejs/plugin-vue": "^4.0.0",
     "autoprefixer": "latest",
     "less": "^4.1.3",

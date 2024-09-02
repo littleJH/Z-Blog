@@ -27,32 +27,16 @@ const modifyMsg = async () => {
     <div class="flex items-center mb-4">
       <div class="flex-grow flex items-center">
         <div class="">
-          <img
-            class="rounded-full w-12 h-12 border border-gray-300 hover:cursor-pointer hover:shadow-md transition-all duration-500 ease-in-out"
-            @click="toUserpage"
-            :src="`http://icon.mgaronya.com/${message.userInfo.Icon}`"
-            alt=""
-          />
+          <img class="rounded-full w-12 h-12 border border-gray-300 hover:cursor-pointer hover:shadow-md transition-all duration-500 ease-in-out" @click="toUserpage" :src="`http://icon.mgaronya.com/${message.userInfo.Icon}`" alt="" />
         </div>
         <div class="ml-4">
           <p class="font-bold">{{ message.userInfo.Name }}</p>
-          <p class="text-gray-500 text-xs">{{ message.created_at }}</p>
+          <p class="text-gray-500 text-xs">{{ message.create_at }}</p>
         </div>
       </div>
       <div>
         <span class="w-8 h-8 flex justify-center items-center">
-          <svg
-            v-if="props.mode === 'self'"
-            @click="emit('deleteMsg')"
-            t="1680750464826"
-            class="icon h-6 w-6 hover:h-8 hover:w-8 hover:cursor-pointer transition-all duration-500 ease-in-out"
-            viewBox="0 0 1024 1024"
-            version="1.1"
-            xmlns="http://www.w3.org/2000/svg"
-            p-id="2905"
-            width="32"
-            height="32"
-          >
+          <svg v-if="props.mode === 'self'" @click="emit('deleteMsg')" t="1680750464826" class="icon h-6 w-6 hover:h-8 hover:w-8 hover:cursor-pointer transition-all duration-500 ease-in-out" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2905" width="32" height="32">
             <path
               d="M632.917333 572.672l165.290667 165.248a42.624 42.624 0 0 1-60.288 60.288l-165.248-165.290667a42.624 42.624 0 0 1 60.245333-60.245333z m-346.88 225.536a42.624 42.624 0 0 1-60.245333-60.288L451.754667 512 225.792 286.08a42.624 42.624 0 1 1 60.288-60.288L512 451.754667l225.92-225.962667a42.624 42.624 0 1 1 60.288 60.288L286.08 798.208z"
               fill="#EF4444"
@@ -60,9 +44,7 @@ const modifyMsg = async () => {
             ></path>
           </svg>
           <svg
-            v-if="
-              mode === 'user' && message.userInfo.Name === store.userInfo?.Name
-            "
+            v-if="mode === 'user' && message.userInfo.Name === store.userInfo?.Name"
             @click="modifyMsg"
             t="1679904819720"
             class="icon h-6 w-6 hover:h-8 hover:w-8 hover:cursor-pointer transition-all duration-500 ease-in-out"
@@ -82,9 +64,7 @@ const modifyMsg = async () => {
         </span>
       </div>
     </div>
-    <p
-      class="text-gray-700 mb-4 bg-gray-100 rounded p-4 dark:bg-shallowBlack dark:text-gray-300"
-    >
+    <p class="text-gray-700 mb-4 bg-gray-100 rounded p-4 dark:bg-shallowBlack dark:text-gray-300">
       {{ message.content }}
     </p>
   </div>

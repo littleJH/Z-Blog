@@ -14,7 +14,7 @@ export interface Message {
   author: string
   content: string
   create_at: string
-  userInfo: UserInfo
+  userInfo: User
 }
 
 export interface User {
