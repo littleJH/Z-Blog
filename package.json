@@ -17,6 +17,7 @@
     "highlight.js": "^11.7.0",
     "marked": "^5.0.4",
     "mitt": "^3.0.0",
+    "mockjs": "^1.1.0",
     "modern-normalize": "^1.1.0",
     "moment": "^2.29.4",
     "nprogress": "^0.2.0",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@types/marked": "^5.0.2",
+    "@types/mockjs": "^1.0.10",
     "@vitejs/plugin-vue": "^4.0.0",
     "autoprefixer": "latest",
     "less": "^4.1.3",

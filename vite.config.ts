@@ -7,39 +7,51 @@ import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import { visualizer } from 'rollup-plugin-visualizer'
 // https://vitejs.dev/config/
-export default defineConfig(() => {
-  return {
-    build: {
-      minify: 'terser',
-      terserOptions: {
-        compress: {
-          drop_console: true,
-          drop_debugger: true
-        }
-      },
-      rollupOptions: {
-        external: 'marked'
+export default defineConfig({
+  build: {
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: true,
+        drop_debugger: true
       }
     },
-    base: './',
-    plugins: [
-      prismjsPlugin({
-        languages: 'all'
-      }),
-      vue(),
-      AutoImport({
-        resolvers: [ElementPlusResolver()]
-      }),
-      Components({
-        resolvers: [ElementPlusResolver()]
-      }),
-      visualizer({
-        open: true
-      })
-    ],
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
+    rollupOptions: {
+      // external: 'marked'
+    }
+  },
+  base: './',
+  plugins: [
+    prismjsPlugin({
+      languages: 'all'
+    }),
+    vue(),
+    AutoImport({
+      resolvers: [ElementPlusResolver()]
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()]
+    }),
+    visualizer({
+      open: true
+    })
+  ],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  server: {
+    proxy: {
+      "/api_chitchat": {
+        target: "http://api_chitchat.mgaronya.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      },
+      "/api_blog": {
+        target: "http://api_blog.mgaronya.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
   }

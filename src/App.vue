@@ -42,11 +42,7 @@ const getPersonal = () => {
 
 onMounted(() => {
   if (localStorage.getItem('theme')) {
-    if (
-      localStorage.getItem('theme') === 'dark' ||
-      (!('theme' in localStorage) &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches)
-    ) {
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark')
       showDark.value = true
     } else {
@@ -76,11 +72,7 @@ const openSearch = () => {
 </script>
 <template>
   <Transition @after-enter="afterEnter">
-    <canvas
-      v-if="showDark"
-      id="starField"
-      class="fixed top-0 z-0 w-full h-full"
-    ></canvas>
+    <canvas v-if="showDark" id="starField" class="fixed top-0 z-0 w-full h-full"></canvas>
   </Transition>
 
   <Header @theme-change="themeChange" @open-search="openSearch"></Header>

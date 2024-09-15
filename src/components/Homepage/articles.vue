@@ -20,6 +20,7 @@ const config = {
 
 onBeforeMount(() => {
   getArticleRecommentApi(config).then(async result => {
+    console.log('🚀 ~ getArticleRecommentApi ~ result:', result)
     const arr = reactive<Array<Article>>([])
     articleList.total = result.data.data.total
     for (let item of result.data.data.articles) {
@@ -47,13 +48,7 @@ onBeforeMount(() => {
     </div>
   </TransitionGroup>
   <div class="flex justify-center m-4">
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :hide-on-single-page="articleList.total <= 20"
-      :total="articleList.total"
-      page-size="20"
-    />
+    <el-pagination background layout="prev, pager, next" :hide-on-single-page="articleList.total <= 20" :total="articleList.total" page-size="20" />
   </div>
 </template>
 <style scoped lang="less"></style>
